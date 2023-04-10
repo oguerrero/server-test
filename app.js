@@ -6,6 +6,21 @@ app.get("/", (req, res) => res.type('html').send(html));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
+app.get("/chart", (req, res) => {
+  res.send(async () => {
+    const data = await fetch("https://opangafinalstg.wpengine.com/wp-json/frm/v2/entries")
+    console.log(data)
+    const json = await data.json()
+    console.log(json)
+    return json
+  })
+})
+
+app.post("/chart", (req, res) => {
+  console.log(req.body)
+  res.send(req.body)
+})
+
 
 const html = `
 <!DOCTYPE html>
