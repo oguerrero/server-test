@@ -10,9 +10,7 @@ app.get("/chart", (req, res) => {
   res.send(async () => {
     const data = await fetch("https://opangafinalstg.wpengine.com/wp-json/frm/v2/entries")
     console.log(data)
-    const json = await data.json()
-    console.log(json)
-    return json
+    return data
   })
 })
 
